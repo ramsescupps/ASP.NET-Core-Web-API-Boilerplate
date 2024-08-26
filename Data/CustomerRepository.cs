@@ -36,7 +36,7 @@ namespace ECommerceAPI.Data
                 Name = reader.GetString(reader.GetOrdinal("Name")),
                 Email = reader.GetString(reader.GetOrdinal("Email")),
                 Address = reader.GetString(reader.GetOrdinal("Address")),
-                IsDeleted = false
+                // IsDeleted = false
               });
             }
           }
