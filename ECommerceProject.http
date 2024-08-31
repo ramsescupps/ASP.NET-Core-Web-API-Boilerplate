@@ -1,0 +1,6 @@
+@ECommerceProject_HostAddress = http://localhost:5207
+
+GET {{ECommerceProject_HostAddress}}/
+Accept: application/json
+
+###
