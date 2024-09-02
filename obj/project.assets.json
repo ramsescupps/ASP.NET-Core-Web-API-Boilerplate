@@ -2194,11 +2194,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work\\Study\\ASP.NET Core\\CLI\\ECommerceProject\\ECommerceProject.csproj",
+      "projectUniqueName": "D:\\Work\\1.Study\\5.ASP.NET Core\\CLI\\ECommerceProject\\ECommerceProject.csproj",
       "projectName": "ECommerceProject",
-      "projectPath": "D:\\Work\\Study\\ASP.NET Core\\CLI\\ECommerceProject\\ECommerceProject.csproj",
+      "projectPath": "D:\\Work\\1.Study\\5.ASP.NET Core\\CLI\\ECommerceProject\\ECommerceProject.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Work\\Study\\ASP.NET Core\\CLI\\ECommerceProject\\obj\\",
+      "outputPath": "D:\\Work\\1.Study\\5.ASP.NET Core\\CLI\\ECommerceProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config"

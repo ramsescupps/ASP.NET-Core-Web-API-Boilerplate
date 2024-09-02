@@ -1,3 +1,4 @@
+using System.Data;
 using ECommerceAPI.DTO;
 using ECommerceAPI.Models;
 using Microsoft.Data.SqlClient;
@@ -36,7 +37,7 @@ namespace ECommerceAPI.Data
                 Name = reader.GetString(reader.GetOrdinal("Name")),
                 Email = reader.GetString(reader.GetOrdinal("Email")),
                 Address = reader.GetString(reader.GetOrdinal("Address")),
-                // IsDeleted = false
+                IsDeleted = false
               });
             }
           }
@@ -58,7 +59,8 @@ namespace ECommerceAPI.Data
 
         using (var command = new SqlCommand(query, connection))
         {
-          command.Parameters.AddWithValue("@CustomerId", customerId);
+          // command.Parameters.AddWithValue("@CustomerId", customerId);
+          command.Parameters.Add("@CustomerId", SqlDbType.Int).Value = customerId;
           using (var reader = await command.ExecuteReaderAsync())
           {
             if (await reader.ReadAsync())
@@ -109,7 +111,7 @@ namespace ECommerceAPI.Data
     }
 
     // Method to Update an Existing Customer
-    public async Task UpdateCustomerAsync(CustomerDTO customer)
+    public async Task<int> UpdateCustomerAsync(CustomerDTO customer)
     {
       var query = "UPDATE Customers SET Name = @Name, Email = @Email, Address = @Address WHERE CustomerId = @CustomerId;";
 
@@ -124,13 +126,14 @@ namespace ECommerceAPI.Data
           command.Parameters.AddWithValue("@Email", customer.Email);
           command.Parameters.AddWithValue("@Address", customer.Address);
 
-          await command.ExecuteNonQueryAsync();
+          int rowsAffected = await command.ExecuteNonQueryAsync();
+          return rowsAffected;
         }
       }
     }
 
     // Method to Delete an Existing Customer
-    public async Task DeleteCustomerAsync(int customerId)
+    public async Task<int> DeleteCustomerAsync(int customerId)
     {
       var query = "UPDATE Customers SET IsDeleted = 1 WHERE CustomerId = @CustomerId;";
 
@@ -141,7 +144,9 @@ namespace ECommerceAPI.Data
         using (var command = new SqlCommand(query, connection))
         {
           command.Parameters.AddWithValue("@CustomerId", customerId);
-          await command.ExecuteNonQueryAsync();
+          int rowsAffected = await command.ExecuteNonQueryAsync();
+
+          return rowsAffected;
         }
       }
     }

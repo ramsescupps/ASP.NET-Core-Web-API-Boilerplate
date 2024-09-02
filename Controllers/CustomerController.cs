@@ -3,6 +3,7 @@ using ECommerceAPI.Data;
 using ECommerceAPI.DTO;
 using ECommerceAPI.Models;
 using System.Net;
+using System.Diagnostics;
 
 namespace ECommerceAPI.Controllers
 {
@@ -88,7 +89,9 @@ namespace ECommerceAPI.Controllers
 
       try
       {
-        await _customerRepository.UpdateCustomerAsync(customerDto);
+        int rowsAffected = await _customerRepository.UpdateCustomerAsync(customerDto);
+        Console.WriteLine("rowsAffected:" + rowsAffected);
+
         return new APIResponse<bool>(true, "Customer Updated Successfully.");
       }
       catch (Exception ex)
@@ -109,7 +112,9 @@ namespace ECommerceAPI.Controllers
           return new APIResponse<bool>(HttpStatusCode.NotFound, "Customer not found.");
         }
 
-        await _customerRepository.DeleteCustomerAsync(id);
+        int rowsAffected = await _customerRepository.DeleteCustomerAsync(id);
+        Console.WriteLine("rowsAffected:" + rowsAffected);
+
         return new APIResponse<bool>(true, "Customer deleted successfully.");
       }
       catch (Exception ex)
